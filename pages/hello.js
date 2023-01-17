@@ -1,3 +1,4 @@
-export default function Hello () {
-    return(<h1>Hola Next.js</h1>)
+export default function Hello () 
+{
+    return(<h1>Hello Next.js</h1>)
 }
