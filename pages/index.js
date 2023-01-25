@@ -6,6 +6,18 @@ import { useRouter } from "next/router"
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const links = [
+    {
+      title: "Top Stories", 
+      desc: "Read articles currently on the homepage of the New York Times",
+      path: "/top-stories"
+    }, 
+    {
+      title: "Popular", 
+      desc: "Read the most popular articles on the New York Times",
+      path: "/popular"
+    }
+  ];
   const [query, getQuery] = useState();
   const router = useRouter()
   const handleOnChange = e => getQuery(e.target.value)
