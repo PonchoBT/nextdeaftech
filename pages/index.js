@@ -10,12 +10,17 @@ export default function Home() {
     {
       title: "Top Stories", 
       desc: "Read articles currently on the homepage of the New York Times",
-      path: "/top-stories"
+      path: "/news/top-stories"
     }, 
     {
       title: "Popular", 
       desc: "Read the most popular articles on the New York Times",
-      path: "/popular"
+      path: "/news/popular"
+    }, 
+    {
+      title: "Sections", 
+      desc: "Get an up-to-the-minute stream of published articles",
+      path: "/sections"
     }
   ];
   const [query, getQuery] = useState();
@@ -23,7 +28,7 @@ export default function Home() {
   const handleOnChange = e => getQuery(e.target.value)
   const handleOnSubmit = e => {
     e.preventDefault()
-    router.push(`/news/${query}`)
+    router.push(`/search/${query}`)
   }
 
   return (
@@ -42,17 +47,21 @@ export default function Home() {
         </form>
 
         <div className={styles.grid}>
-          <Link href="/news/">
-            <div className={styles.card}>
-              <h2>Top Stories &rarr;</h2>
-              <p>Read articles currently on the homepage</p>
-            </div>
-          </Link>
+          {links.map(link => {
+            return( 
+            <Link key={link.path} href={link.path}>
+              <a className={styles.card}>
+                <h2>{link.title} &rarr;</h2>
+                <p>{link.desc}</p>
+              </a>
+            </Link>)
+          })}
+         
         </div>
       </main>
 
       <footer className={styles.footer}>
-        <Link
+        <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
@@ -61,7 +70,7 @@ export default function Home() {
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
-        </Link>
+        </a>
       </footer>
     </div>
   )

@@ -36,7 +36,11 @@ export default function Layout({ children }) {
         {
             title: "Popular", 
             path: "/news/popular"
-        }
+        },
+        {
+            title: "Sections", 
+            path: "/sections"
+          }
       ];
     return(
         <>
